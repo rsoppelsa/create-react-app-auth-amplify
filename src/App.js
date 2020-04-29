@@ -9,6 +9,12 @@ Amplify.configure(aws_exports);
 class App extends Component {
   render() {
     return (
+      
+      Auth.currentAuthenticatedUser({
+          bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+      }).then(user => console.log(user))
+      .catch(err => console.log(err));
+      
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
